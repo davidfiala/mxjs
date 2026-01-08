@@ -1,0 +1,47 @@
+{
+  "name": "mxjs",
+  "image": "fiala.me/mxjsdev",
+  "workspaceFolder": "/app",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+  "runArgs": ["--name", "mxjs_devcontainer", "--tmpfs", "/tmp:exec,mode=01777"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools",
+        "anysphere.cpptools",
+        "xaver.clang-format",
+        "ms-vscode.cmake-tools",
+        "ms-azuretools.vscode-containers",
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.makefile-tools",
+        "esbenp.prettier-vscode",
+        "ms-vscode.typescript-language-features"
+      ],
+      "settings": {
+        "makefile.configureOnOpen": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true,
+        "npm.packageManager": "pnpm",
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[c]": {
+          "editor.defaultFormatter": "xaver.clang-format"
+        },
+        "[cpp]": {
+          "editor.defaultFormatter": "xaver.clang-format"
+        },
+        "C_Cpp.default.compileCommands": "/app/compile_commands.json",
+        "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+        "C_Cpp.default.intelliSenseMode": "linux-gcc-x64"
+      }
+    }
+  },
+  "remoteUser": "node"
+}

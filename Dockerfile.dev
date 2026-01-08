@@ -1,0 +1,70 @@
+# cat Dockerfile.dev | docker build -t fiala.me/mxjsdev --progress=plain -
+
+FROM public.ecr.aws/docker/library/gcc:15.2.0-trixie@sha256:1c68ef4ba3730c7e70c343212cd322af0e806e7e8c5c713facf4d5f719e155a3
+
+USER root
+WORKDIR /root
+
+
+RUN apt-get update && \
+    apt-get dist-upgrade -y && \
+    apt-get install -y bear vim less dialog tmux screen time psmisc wget curl gnupg git gdb strace gdbserver lsb-release pkg-config tzdata locales clang-format clangd && \
+    apt-get clean
+
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
+
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
+
+RUN echo 'set -g mouse on' >> /root/.tmux.conf
+RUN cat <<'EOF' >> /root/.bashrc
+HISTCONTROL=
+shopt -s histappend
+HISTSIZE=-1
+HISTFILESIZE=-1
+HISTTIMEFORMAT="[%F %T] "
+HISTFILE=~/.bash_history_eternal
+PS1=$'\\[\E]633;A\a\\]\\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ \\[\E]633;B\a\\]'
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -a'
+alias l='ls -CF'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+EOF
+
+RUN groupadd -g 1000 node && adduser --uid 1000 --gid 1000 node
+
+USER node
+WORKDIR /home/node
+ADD --checksum=sha256:2d8359a64a3cb07c02389ad88ceecd43f2fa469c06104f92f98df5b6f315275f --chmod=555 https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh /home/node/install_nvm.sh
+ENV NVM_DIR=/home/node/.nvm
+RUN bash -c "bash install_nvm.sh && source .nvm/nvm.sh && nvm install v25.2.1 && nvm use v25.2.1 && nvm alias default v25.2.1 && npm i --g npm@11.7.0 && npm i -g pnpm@10.27.0 npm-check-updates@19.3.1"
+
+ENV force_color_prompt=yes
+RUN echo 'set -g mouse on' >> /home/node/.tmux.conf
+RUN cat <<'EOF' >> /home/node/.bashrc
+HISTCONTROL=
+shopt -s histappend
+HISTSIZE=-1
+HISTFILESIZE=-1
+HISTTIMEFORMAT="[%F %T] "
+HISTFILE=/app/.bash_history_eternal
+alias ll='ls -l'
+alias la='ls -a'
+alias l='ls -CF'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias mxtest='bash -c "cd /app && make clean && make CONFIG_SMALL= CONFIG_SOFTFLOAT=y || make clean && make test"'
+
+alias rebuild_compile_commands='bash -c "cd /app && make clean && bear -- make CONFIG_SMALL= CONFIG_SOFTFLOAT=y test"'
+EOF
+
+WORKDIR /app

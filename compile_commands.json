@@ -1,0 +1,216 @@
+[
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-c",
+      "-o",
+      "mqjs_stdlib.host.o",
+      "mqjs_stdlib.c"
+    ],
+    "directory": "/app",
+    "file": "/app/mqjs_stdlib.c",
+    "output": "/app/mqjs_stdlib.host.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-c",
+      "-o",
+      "mquickjs_build.host.o",
+      "mquickjs_build.c"
+    ],
+    "directory": "/app",
+    "file": "/app/mquickjs_build.c",
+    "output": "/app/mquickjs_build.host.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "mqjs.o",
+      "mqjs.c"
+    ],
+    "directory": "/app",
+    "file": "/app/mqjs.c",
+    "output": "/app/mqjs.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "readline_tty.o",
+      "readline_tty.c"
+    ],
+    "directory": "/app",
+    "file": "/app/readline_tty.c",
+    "output": "/app/readline_tty.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "readline.o",
+      "readline.c"
+    ],
+    "directory": "/app",
+    "file": "/app/readline.c",
+    "output": "/app/readline.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "mquickjs.o",
+      "mquickjs.c"
+    ],
+    "directory": "/app",
+    "file": "/app/mquickjs.c",
+    "output": "/app/mquickjs.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "dtoa.o",
+      "dtoa.c"
+    ],
+    "directory": "/app",
+    "file": "/app/dtoa.c",
+    "output": "/app/dtoa.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "libm.o",
+      "libm.c"
+    ],
+    "directory": "/app",
+    "file": "/app/libm.c",
+    "output": "/app/libm.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "cutils.o",
+      "cutils.c"
+    ],
+    "directory": "/app",
+    "file": "/app/cutils.c",
+    "output": "/app/cutils.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-c",
+      "-o",
+      "example_stdlib.host.o",
+      "example_stdlib.c"
+    ],
+    "directory": "/app",
+    "file": "/app/example_stdlib.c",
+    "output": "/app/example_stdlib.host.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/bin/gcc",
+      "-Wall",
+      "-g",
+      "-D_GNU_SOURCE",
+      "-fno-math-errno",
+      "-fno-trapping-math",
+      "-O2",
+      "-msoft-float",
+      "-DUSE_SOFTFLOAT",
+      "-c",
+      "-o",
+      "example.o",
+      "example.c"
+    ],
+    "directory": "/app",
+    "file": "/app/example.c",
+    "output": "/app/example.o"
+  }
+]
